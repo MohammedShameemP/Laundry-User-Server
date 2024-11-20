@@ -48,7 +48,10 @@ exports.register = async (req, res) => {
 		try {
 		const { emailOrPhone, password } = req.body;
 		console.log("req.body", req.body);
-		const user = await User.findOne({emailOrPhone:emailOrPhone });
+        const isUserExist = await User.find()
+        console.log(isUserExist, 'is');
+        
+		const user = await User.findOne({ emailOrPhone });
 		console.log("user=", user);
 				
 		if (!user) {
